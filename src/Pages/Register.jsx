@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, storage, db } from '../firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export const Register = () => {
   const [err, setErr] = useState(false);
@@ -62,7 +62,7 @@ export const Register = () => {
   return (
     <div className='formContainer'>
       <div className='formWrapper'>
-        <span className='logo'>Chat App</span>
+        <span className='logo'>TalkSpace</span>
         <span className='title'>Register</span>
         <form onSubmit={handleSubmit}>
           <input type='text' placeholder='name' />
@@ -76,7 +76,7 @@ export const Register = () => {
           <button>Sign Up</button>
           {err && <span>Something went wrong</span>}
         </form>
-        <p>Already have an account? <b>Sign In</b></p>
+        <p>Already have an account? <Link to={"/login"}><b>Sign in</b></Link></p>
       </div>
     </div>
   );
